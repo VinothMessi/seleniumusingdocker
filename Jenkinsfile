@@ -11,7 +11,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 //sh
-                bat "docker build -t=vinoth/demo-site ."
+                bat "docker build -t=vinothmessi/demo-site ."
             }
         }
         stage('Push Image') {
@@ -19,7 +19,8 @@ pipeline {
 			    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
                     //sh
 			        bat "docker login --username=${user} --password=${pass}"
-			        bat "docker push vinoth/demo-site:latest"
+					bat "docker push vinothmessi/demo-site:${BUILD_NUMBER}"
+			        bat "docker push vinothmessi/demo-site:latest"
 			    }                           
             }
         }
