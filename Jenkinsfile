@@ -11,7 +11,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 //sh
-                bat "docker build -t='vinoth/demo-site' ."
+                bat "docker build -t=vinoth/demo-site ."
             }
         }
         stage('Push Image') {
